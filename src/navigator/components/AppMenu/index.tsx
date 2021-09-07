@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
 import routes from '../../route';
+import { Box, Paper } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -62,11 +63,17 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    [theme.breakpoints.between('xs', 'sm')]: {
+      padding: theme.spacing(0),
+    },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+  },
+  contentChildren: {
+    height: `calc(100% - ${drawerWidth}px)`,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -141,7 +148,7 @@ const AppMenu: React.FC = ({ children }) => {
                 key={id}
                 style={{ color: 'inherit', textDecoration: 'inherit' }}
               >
-                <ListItem button>
+                <ListItem button onClick={handleDrawerClose}>
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
@@ -158,7 +165,9 @@ const AppMenu: React.FC = ({ children }) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        {children}
+        <Paper>
+          <Box minHeight={window.innerHeight - 112}>{children}</Box>
+        </Paper>
       </main>
     </div>
   );
