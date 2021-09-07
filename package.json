@@ -12,7 +12,7 @@
   ],
   "release": {
     "branches": [
-      "main"
+      "master"
     ],
     "prepare": [
       "@semantic-release/changelog",
