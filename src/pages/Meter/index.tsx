@@ -3,11 +3,23 @@ import { Box, Button, Typography } from '@material-ui/core';
 import ReactSpeedometer, {
   CustomSegmentLabelPosition,
 } from 'react-d3-speedometer';
+import { getMeters } from '../../services/meter';
 
 const Meter = () => {
   const [quantity, setQuantity] = useState(0);
 
-  useEffect(() => {});
+  useEffect(() => {
+    const time = setInterval(() => {
+      getMeters()
+        .then((e) => {
+          console.log(e);
+        })
+        .catch((e) => console.log(e));
+    }, 1700);
+    return () => {
+      clearInterval(time);
+    };
+  });
 
   const handleTeste = () => {
     setQuantity((old) => {
