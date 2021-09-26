@@ -15,24 +15,24 @@ const Meter = () => {
   const [isTokenFound, setTokenFound] = useState(false);
 
   useEffect(() => {
-    // const time = setInterval(() => {
-    //   getMeters()
-    //     .then((result) => {
-    //       if (result) {
-    //         const { value } = result;
-    //         setQuantity((old) => {
-    //           if (value > 1000) {
-    //             return old;
-    //           }
-    //           return value;
-    //         });
-    //       }
-    //     })
-    //     .catch((e) => console.log(e));
-    // }, 1700);
-    // return () => {
-    //   clearInterval(time);
-    // };
+    const time = setInterval(() => {
+      getMeters()
+        .then((result) => {
+          if (result) {
+            const { value } = result;
+            setQuantity((old) => {
+              if (value > 1000) {
+                return old;
+              }
+              return value;
+            });
+          }
+        })
+        .catch((e) => console.log(e));
+    }, 1700);
+    return () => {
+      clearInterval(time);
+    };
   });
 
   const handleVerifyPermission = () => {
