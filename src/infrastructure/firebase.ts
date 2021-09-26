@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { saveToken } from '../services/token';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDqLQsKcpm_J6NvnUdh7cG5Jce4gx3g23g',
@@ -22,8 +23,8 @@ export const hasValidToken = (setTokenFound: (hasToken: boolean) => void) => {
       'BE21czqxSjYH-Eubl7KHwEc1vDg4wLZp0t0rP79ObKlMe1V0XRbEZpQUBAfXwvgNZqtDJ10Qv_cpMZXV8tFvD2s',
   })
     .then((currentToken) => {
-      debugger;
       if (currentToken) {
+        saveToken(currentToken);
         console.log('current token for client: ', currentToken);
         setTokenFound(true);
       } else {
