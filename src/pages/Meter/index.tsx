@@ -11,8 +11,16 @@ const Meter = () => {
   useEffect(() => {
     const time = setInterval(() => {
       getMeters()
-        .then((e) => {
-          console.log(e);
+        .then((result) => {
+          if (result) {
+            const { value } = result;
+            setQuantity((old) => {
+              if (value > 1000) {
+                return old;
+              }
+              return value;
+            });
+          }
         })
         .catch((e) => console.log(e));
     }, 1700);
@@ -40,7 +48,7 @@ const Meter = () => {
         flexDirection="column"
       >
         <ReactSpeedometer
-          customSegmentStops={[0, 80, 750, 1000]}
+          customSegmentStops={[0, 80, 600, 1000]}
           segmentColors={['firebrick', 'tomato', 'gold', 'limegreen'].reverse()}
           value={quantity}
           currentValueText="Niveis de vazamento!"
