@@ -4,37 +4,74 @@ import ReactSpeedometer, {
   CustomSegmentLabelPosition,
 } from 'react-d3-speedometer';
 import { getMeters } from '../../services/meter';
+import {
+  hasValidToken,
+  onMessageListener,
+} from '../../infrastructure/firebase';
 
 const Meter = () => {
   const [quantity, setQuantity] = useState(0);
+  const [hiddenMessage, setHiddenMessage] = useState(true);
+  const [isTokenFound, setTokenFound] = useState(false);
 
   useEffect(() => {
-    const time = setInterval(() => {
-      getMeters()
-        .then((result) => {
-          if (result) {
-            const { value } = result;
-            setQuantity((old) => {
-              if (value > 1000) {
-                return old;
-              }
-              return value;
-            });
-          }
-        })
-        .catch((e) => console.log(e));
-    }, 1700);
-    return () => {
-      clearInterval(time);
-    };
+    // const time = setInterval(() => {
+    //   getMeters()
+    //     .then((result) => {
+    //       if (result) {
+    //         const { value } = result;
+    //         setQuantity((old) => {
+    //           if (value > 1000) {
+    //             return old;
+    //           }
+    //           return value;
+    //         });
+    //       }
+    //     })
+    //     .catch((e) => console.log(e));
+    // }, 1700);
+    // return () => {
+    //   clearInterval(time);
+    // };
   });
 
-  const handleTeste = () => {
-    setQuantity((old) => {
-      return 800;
-    });
+  const handleVerifyPermission = () => {
+    hasValidToken(setTokenFound);
+    setHiddenMessage(false);
+    // setQuantity((old) => {
+    //   return 800;
+    // });
   };
 
+  // onMessageListener()
+  //   .then((payload) => {
+  //     // setShow(true);
+  //     // setNotification({
+  //     //   title: payload.notification.title,
+  //     //   body: payload.notification.body,
+  //     // });
+  //     console.log(payload);
+  //   })
+  //   .catch((err) => console.log('eu?'));
+
+  const onMessageWithToken = () => {
+    if (isTokenFound) {
+      console.log('oii');
+      onMessageListener()
+        .then((payload: any) => {
+          // setShow(true);
+          // setNotification({
+          //   title: payload.notification.title,
+          //   body: payload.notification.body,
+          // });
+          new Notification(payload?.notification.title);
+          console.log(payload);
+        })
+        .catch((err) => console.log('eu?'));
+    }
+  };
+
+  onMessageWithToken();
   return (
     <Box p={4}>
       <Box mb={4} flex="1 1 auto">
@@ -72,8 +109,20 @@ const Meter = () => {
           ].reverse()}
         />
         <Box>
-          <Button variant="outlined" color="primary" onClick={handleTeste}>
-            Teste
+          {!hiddenMessage && (
+            <Box>
+              <Typography>
+                {isTokenFound ? 'Permissão habilitada' : 'Permissão negada'}
+              </Typography>
+            </Box>
+          )}
+
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleVerifyPermission}
+          >
+            Verificar permissão
           </Button>
         </Box>
       </Box>
