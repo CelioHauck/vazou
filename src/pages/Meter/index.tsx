@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import ReactSpeedometer, {
   CustomSegmentLabelPosition,
 } from 'react-d3-speedometer';
