@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CelioHauck/vazou/compare/v1.1.0...v1.1.1) (2021-09-27)
+
+
+### Bug Fixes
+
+* **metria:** Corrigido mensagem do snackbar ([7eb34db](https://github.com/CelioHauck/vazou/commit/7eb34dbae4a4ea2652101b9746203eaea536c3e1))
+
 # [1.1.0](https://github.com/CelioHauck/vazou/compare/v1.0.0...v1.1.0) (2021-09-27)
 
 
