@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/CelioHauck/vazou/compare/v1.0.0...v1.1.0) (2021-09-27)
+
+
+### Features
+
+* **config:** Implementação da camada http ([#2](https://github.com/CelioHauck/vazou/issues/2)) ([1ae2670](https://github.com/CelioHauck/vazou/commit/1ae2670e44cee509ce5740ae3300eafd59cad43e))
+* **config:** Implementação da integração com o back ([#3](https://github.com/CelioHauck/vazou/issues/3)) ([61c6763](https://github.com/CelioHauck/vazou/commit/61c676330fd63d93afcc398750268c120d0ae3cc))
+* **metrica:** push notification ([#4](https://github.com/CelioHauck/vazou/issues/4)) ([bdd9bc5](https://github.com/CelioHauck/vazou/commit/bdd9bc54a9809a1fbccaf3c46110489d1f561a83))
+
 # 1.0.0 (2021-09-12)
 
 
