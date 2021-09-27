@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import ReactSpeedometer, {
   CustomSegmentLabelPosition,
 } from 'react-d3-speedometer';
 import { getMeters } from '../../services/meter';
+import { hasValidToken } from '../../infrastructure/firebase';
 
 const Meter = () => {
   const [quantity, setQuantity] = useState(0);
+  const [isTokenFound, setTokenFound] = useState<boolean | undefined>();
+
+  const handleVerifyPermission = () => {
+    hasValidToken(setTokenFound);
+  };
 
   useEffect(() => {
     const time = setInterval(() => {
@@ -29,12 +35,9 @@ const Meter = () => {
     };
   });
 
-  const handleTeste = () => {
-    setQuantity((old) => {
-      return 800;
-    });
-  };
-
+  useEffect(() => {
+    handleVerifyPermission();
+  }, []);
   return (
     <Box p={4}>
       <Box mb={4} flex="1 1 auto">
@@ -72,9 +75,13 @@ const Meter = () => {
           ].reverse()}
         />
         <Box>
-          <Button variant="outlined" color="primary" onClick={handleTeste}>
-            Teste
-          </Button>
+          {isTokenFound !== undefined && (
+            <Box>
+              <Typography>
+                {isTokenFound ? 'Permissão habilitada' : 'Permissão negada'}
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>

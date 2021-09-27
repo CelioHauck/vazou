@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import './infrastructure/firebase';
 ReactDOM.render(
   <React.StrictMode>
     <App />
