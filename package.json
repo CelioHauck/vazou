@@ -66,7 +66,7 @@
   "scripts": {
     "start:dev": "dotenv -e .env.development react-scripts start",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "dotenv -e .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "commit": "git-cz --disable-emoji"
