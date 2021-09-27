@@ -65,6 +65,7 @@
   },
   "scripts": {
     "start:dev": "dotenv -e .env.development react-scripts start",
+    "start:prod": "dotenv -e .env.production react-scripts start",
     "start": "react-scripts start",
     "build": "dotenv -e .env.production react-scripts build",
     "test": "react-scripts test",

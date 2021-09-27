@@ -2,7 +2,7 @@ import { Snackbar, ThemeProvider } from '@material-ui/core';
 import theme from './theme';
 import { RouterNavigation } from './navigator';
 import { onMessageListener } from './infrastructure/firebase';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@material-ui/core';
 function App() {
   const [open, setOpen] = useState(false);
@@ -10,6 +10,7 @@ function App() {
   const onMessageWithToken = () => {
     onMessageListener()
       .then((payload: any) => {
+        debugger;
         console.log(payload.notification.body);
         setMessage(payload?.notification.body);
         setOpen(true);
@@ -17,11 +18,8 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    onMessageWithToken();
-  }, []);
-
   const handleClose = () => setOpen(false);
+  onMessageWithToken();
   return (
     <ThemeProvider theme={theme}>
       <RouterNavigation />
