@@ -3,3 +3,9 @@ export interface MeterResponse {
   sendDate: string;
   value: number;
 }
+
+export interface Meter {
+  id: string;
+  sendDate: Date;
+  value: number;
+}

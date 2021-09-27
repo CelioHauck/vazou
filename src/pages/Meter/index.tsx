@@ -3,30 +3,30 @@ import { Box, Typography } from '@material-ui/core';
 import ReactSpeedometer, {
   CustomSegmentLabelPosition,
 } from 'react-d3-speedometer';
-import { getMeters } from '../../services/meter';
+import { getLastMeter } from '../../services/meter';
 import { hasValidToken } from '../../infrastructure/firebase';
 
 const Meter = () => {
   const [quantity, setQuantity] = useState(0);
-  const [isTokenFound, setTokenFound] = useState<boolean | undefined>();
+  const [permissionMessage, setPermissionMessage] = useState('');
 
   const handleVerifyPermission = () => {
-    hasValidToken(setTokenFound);
+    hasValidToken(setPermissionMessage);
   };
 
   useEffect(() => {
     const time = setInterval(() => {
-      getMeters()
+      getLastMeter()
         .then((result) => {
           if (result) {
             const { value } = result;
-            setQuantity((old) => {
+            setQuantity(() => {
               if (value > 1000) {
-                return old;
+                return 1000;
               }
               return value;
             });
-          }
+          } else setQuantity(0);
         })
         .catch((e) => console.log(e));
     }, 1700);
@@ -75,13 +75,9 @@ const Meter = () => {
           ].reverse()}
         />
         <Box>
-          {isTokenFound !== undefined && (
-            <Box>
-              <Typography>
-                {isTokenFound ? 'Permissão habilitada' : 'Permissão negada'}
-              </Typography>
-            </Box>
-          )}
+          <Typography variant="body1" style={{ fontWeight: 'bolder' }}>
+            {permissionMessage}
+          </Typography>
         </Box>
       </Box>
     </Box>

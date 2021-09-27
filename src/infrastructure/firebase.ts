@@ -17,32 +17,41 @@ const app = initializeApp(firebaseConfig);
 
 const messaging = getMessaging(app);
 
-export const hasValidToken = (setTokenFound: (hasToken: boolean) => void) => {
+const notificationIsSupported = !('Notification' in window);
+
+export const hasValidToken = (
+  setPermissionMessage: (message: string) => void
+) => {
+  if (notificationIsSupported) {
+    setPermissionMessage(
+      'Seu navegador não tem suporte para push notification'
+    );
+    return;
+  }
   return getToken(messaging, {
     vapidKey:
       'BE21czqxSjYH-Eubl7KHwEc1vDg4wLZp0t0rP79ObKlMe1V0XRbEZpQUBAfXwvgNZqtDJ10Qv_cpMZXV8tFvD2s',
   })
-    .then((currentToken) => {
+    .then((currentToken: string) => {
       if (currentToken) {
         saveToken(currentToken);
         console.log('current token for client: ', currentToken);
-        setTokenFound(true);
+        setPermissionMessage('Permissão habilitada');
       } else {
         console.log(
           'No registration token available. Request permission to generate one.'
         );
-        setTokenFound(false);
+        setPermissionMessage('Permissão negada');
       }
     })
-    .catch((err) => {
-      debugger;
+    .catch((err: any) => {
       console.log('An error occurred while retrieving token. ', err);
     });
 };
 
 export const onMessageListener = () =>
   new Promise((resolve) => {
-    onMessage(messaging, (payload) => {
+    onMessage(messaging, (payload: any) => {
       resolve(payload);
     });
   });
