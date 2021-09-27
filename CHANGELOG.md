@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CelioHauck/vazou/compare/v1.1.1...v1.2.0) (2021-09-27)
+
+
+### Features
+
+* **metria:** Chamada do novo endpoit e outras melhorias ([4e0d51c](https://github.com/CelioHauck/vazou/commit/4e0d51c6bc751cd6c288686f1f3411b025aa2e32))
+
 ## [1.1.1](https://github.com/CelioHauck/vazou/compare/v1.1.0...v1.1.1) (2021-09-27)
 
 
