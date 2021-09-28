@@ -1,68 +1,46 @@
-import { Box, Typography } from '@material-ui/core';
 import React from 'react';
+import { Box, Typography } from '@material-ui/core';
+import { METER } from '../../navigator/CONSTANTS';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <Box p={4}>
       <Box mb={4}>
-        <Typography variant="h1">Lorem Ipsum</Typography>
+        <Typography variant="h3">Bem vindo!</Typography>
       </Box>
       <Box mb={2}>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut ante
-          augue. Fusce et mi vitae metus porta porta ut sit amet risus. Nam
-          auctor elementum vehicula. Nam sed fringilla dui, vitae congue erat.
-          Integer et pellentesque magna. Integer vitae gravida odio. Vestibulum
-          libero ipsum, interdum at magna in, feugiat fermentum ipsum. Nullam in
-          ante metus.
+          Soluções para detecção de gas são cada vez mais necessários para
+          garantir a segurança de todos ! Tanto que existem leis que exigem
+          sensores para detectar gazes que possam causar algum tipo de acidente,
+          como por exemplo, a lei municipal 5303/98 | Lei nº 5303 de 22 de junho
+          de 1998
         </Typography>
       </Box>
       <Box mb={2}>
         <Typography paragraph>
-          Etiam tincidunt, turpis tincidunt dapibus tristique, nisi nisi
-          imperdiet leo, vitae gravida erat ex nec neque. Phasellus hendrerit,
-          velit eu dictum suscipit, magna augue lobortis leo, eget sodales erat
-          dui et nibh. Cras fringilla odio in ipsum consequat bibendum.
-          Vestibulum eget lobortis orci. Fusce efficitur quam eget arcu sagittis
-          accumsan. Nulla pellentesque dignissim feugiat. Proin vitae diam
-          dictum, ultrices augue quis, laoreet neque. In faucibus tincidunt leo
-          vehicula gravida. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus. Maecenas vitae bibendum
-          metus. Nam accumsan arcu in nulla suscipit feugiat. Aenean at nibh vel
-          mi ultricies condimentum in quis elit. Nullam id turpis erat. Nulla
-          ullamcorper turpis nibh, ut aliquam magna cursus ut. In consectetur
-          semper magna, consectetur placerat lectus tempus viverra. Praesent in
-          ex eleifend, aliquam ipsum a, condimentum velit.
+          Ela diz que: "DISPÕE SOBRE A OBRIGATORIEDADE DO USO DE APARELHO SENSOR
+          DE VAZAMENTO DE GÁS NOS ESTABELECIMENTOS COMERCIAIS, INDUSTRIAIS E
+          PRÉDIOS RESIDENCIAIS DO MUNICÍPIO DE FLORIANÓPOLIS E DÁ OUTRAS
+          PROVIDÊNCIAS." para saber mais sobre essa lei clique{' '}
+          <a href="https://cm.jusbrasil.com.br/legislacao/996657/lei-5303-98">
+            aqui.
+          </a>
         </Typography>
       </Box>
       <Box mb={2}>
         <Typography paragraph>
-          Donec purus dolor, malesuada non lacus quis, facilisis mollis ante.
-          Quisque vitae orci auctor, ultricies neque nec, faucibus justo.
-          Quisque quam nulla, pharetra sed euismod et, dapibus eu diam. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor sed
-          est eu faucibus. Quisque euismod dolor id ante tincidunt accumsan
-          faucibus eu nisi. In luctus molestie nibh vel lobortis. Pellentesque
-          facilisis felis nec tellus accumsan, vitae congue ipsum lacinia. Nunc
-          augue felis, fringilla nec venenatis eu, iaculis ut arcu. Sed libero
-          odio, imperdiet eget maximus non, scelerisque sit amet ipsum.
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-          posuere cubilia curae; Mauris finibus purus eu risus iaculis tempus.
+          O site vazou tem o intuito de informar ao usuário quando ocorrer algum
+          tipo de vazamento perigoso ou critico, para conseguir acompanhar da
+          melhor formar possivel é necessário habilitar a sua permissão para
+          receber notificações em segundo plano.
         </Typography>
       </Box>
       <Box mb={2}>
         <Typography paragraph>
-          In luctus, massa at varius tristique, odio quam efficitur enim, id
-          euismod dolor mi eget tortor. Nam accumsan tempus erat, quis
-          consectetur ipsum faucibus cursus. Suspendisse eu diam id nisl
-          ullamcorper eleifend. Morbi mollis placerat rhoncus. Curabitur mi
-          metus, eleifend ut volutpat ut, bibendum eget sapien. Integer congue
-          felis ut ex hendrerit, sit amet vulputate nunc eleifend. Donec
-          imperdiet sed magna nec imperdiet. Aliquam at odio non ex ullamcorper
-          efficitur a ac leo. Suspendisse rhoncus velit accumsan arcu tincidunt
-          molestie. Maecenas fermentum eu elit nec facilisis. Pellentesque
-          porttitor risus tortor, vitae placerat dui interdum eu. Vestibulum id
-          convallis ante. Sed vel erat risus.
+          Você tambem pode acompanhar os niveis de vazamento{' '}
+          <Link to={`${METER}`}>aqui</Link>
         </Typography>
       </Box>
     </Box>
