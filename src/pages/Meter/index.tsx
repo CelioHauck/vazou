@@ -51,7 +51,7 @@ const Meter = () => {
         flexDirection="column"
       >
         <ReactSpeedometer
-          customSegmentStops={[0, 80, 600, 1000]}
+          customSegmentStops={[0, 400, 800, 1000]}
           segmentColors={['firebrick', 'tomato', 'gold', 'limegreen'].reverse()}
           value={quantity}
           currentValueText="Niveis de vazamento!"
