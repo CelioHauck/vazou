@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/CelioHauck/vazou/compare/v1.2.0...v1.2.1) (2021-09-28)
+
+
+### Bug Fixes
+
+* **metria:** Valores de metricas alterados ([62a50f0](https://github.com/CelioHauck/vazou/commit/62a50f096ac9f5339a6979f2d8d7d47080839aa0))
+
 # [1.2.0](https://github.com/CelioHauck/vazou/compare/v1.1.1...v1.2.0) (2021-09-27)
 
 
