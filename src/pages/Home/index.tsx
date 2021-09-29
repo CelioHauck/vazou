@@ -31,9 +31,9 @@ const Home = () => {
       </Box>
       <Box mb={2}>
         <Typography paragraph>
-          O site vazou tem o intuito de informar ao usuário quando ocorrer algum
-          tipo de vazamento perigoso ou critico, para conseguir acompanhar da
-          melhor formar possivel é necessário habilitar a sua permissão para
+          O site "Vazou" tem o intuito de informar ao usuário quando ocorrer
+          algum tipo de vazamento perigoso ou critico, para conseguir acompanhar
+          da melhor formar possivel é necessário habilitar a sua permissão para
           receber notificações em segundo plano.
         </Typography>
       </Box>
